@@ -1,10 +1,36 @@
-import ghats from "@/assets/ghats.jpg";
-import coastal from "@/assets/coastal.jpg";
-import hills from "@/assets/hills.jpg";
-import fort from "@/assets/fort.jpg";
-import waterfall from "@/assets/waterfall.jpg";
-import trekWomen from "@/assets/trek-women.jpg";
-import beachCamp from "@/assets/beach-camp.jpg";
+// Real 4K photography (Unsplash CDN) — served pre-optimised and cached globally.
+const u = (id: string, w = 2400) =>
+  `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=80`;
+
+export const heroImage = u("photo-1470071459604-3b5ec3a7fe05", 3000);
+const ghats = u("photo-1506905925346-21bda4d32df4");
+const coastal = u("photo-1512343879784-a960bf40e7f2");
+const hills = u("photo-1501785888041-af3ef285b470");
+const fort = u("photo-1477587458883-47145ed94245");
+const waterfall = u("photo-1590050752117-238cb0fb12b1");
+const trekWomen = u("photo-1544735716-392fe2489ffa");
+const beachCamp = u("photo-1516815231560-8f41ec531527");
+const nightSky = u("photo-1519681393784-d120267933ba");
+const heritage = u("photo-1548013146-72479768bada");
+const culture = u("photo-1571536802807-30451e3955d8");
+
+export const IMAGES = {
+  hero: heroImage,
+  ghats,
+  coastal,
+  hills,
+  fort,
+  waterfall,
+  trekWomen,
+  beachCamp,
+  nightSky,
+  heritage,
+  culture,
+};
+
+/** Every image the site renders — warmed during the intro loader. */
+export const allImages = Object.values(IMAGES);
+
 
 export const CONTACT = {
   brand: "BharatPravas",
