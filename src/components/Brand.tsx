@@ -2,28 +2,33 @@ import logo from "@/assets/logo.png.asset.json";
 
 export const LOGO_URL = logo.url;
 
-export function BrandLogo({
-  className = "size-11",
-  spin = false,
-}: {
-  className?: string;
-  spin?: boolean;
-}) {
+/** Circular emblem cropped out of the full logo lockup. */
+export function BrandMark({ className = "size-11" }: { className?: string }) {
   return (
     <span
       className={`relative block shrink-0 overflow-hidden rounded-full bg-white ring-1 ring-gold/50 ${className}`}
     >
       <img
         src={LOGO_URL}
-        alt="BharatPravas logo"
-        width={512}
-        height={512}
+        alt="BharatPravas"
         loading="eager"
         decoding="sync"
-        // @ts-expect-error - valid HTML attribute
-        fetchpriority="high"
-        className={`size-full scale-[1.35] object-contain object-center ${spin ? "animate-float" : ""}`}
+        className="absolute inset-0 size-full object-contain"
+        style={{ transform: "scale(2.45)", transformOrigin: "50% 38%" }}
       />
     </span>
+  );
+}
+
+/** Full logo lockup (emblem + wordmark). */
+export function BrandLockup({ className = "w-56" }: { className?: string }) {
+  return (
+    <img
+      src={LOGO_URL}
+      alt="BharatPravas — Offbeat. Authentic. Yours."
+      loading="eager"
+      decoding="sync"
+      className={`block h-auto object-contain ${className}`}
+    />
   );
 }
