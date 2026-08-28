@@ -1,18 +1,28 @@
 import { Link } from "@tanstack/react-router";
-import { Facebook, Instagram, Mail, Mountain, Phone, Clock, Youtube } from "lucide-react";
+import { Facebook, Instagram, Mail, Phone, Clock, Youtube } from "lucide-react";
 import { CONTACT, whatsappLink } from "@/lib/site-data";
 import { WhatsAppIcon } from "./SiteHeader";
+import { BrandMark } from "./Brand";
 
 export function SiteFooter() {
   return (
-    <footer className="relative mt-24 overflow-hidden bg-forest-gradient text-primary-foreground">
-      <div className="pointer-events-none absolute inset-x-0 -top-1 h-16 bg-background [clip-path:polygon(0_0,100%_0,100%_10%,88%_60%,72%_20%,55%_75%,38%_25%,20%_70%,8%_30%,0_65%)]" />
+    <footer className="relative mt-24 bg-forest-gradient text-primary-foreground">
+      {/* Smooth wave divider */}
+      <svg
+        viewBox="0 0 1440 120"
+        preserveAspectRatio="none"
+        aria-hidden="true"
+        className="absolute inset-x-0 -top-[1px] h-16 w-full -translate-y-full text-forest-deep sm:h-24"
+      >
+        <path
+          fill="currentColor"
+          d="M0,120 C240,40 480,0 720,20 C960,40 1200,110 1440,80 L1440,120 Z"
+        />
+      </svg>
       <div className="container-x grid gap-10 py-20 md:grid-cols-2 lg:grid-cols-5">
         <div className="lg:col-span-2">
-          <div className="flex items-center gap-2">
-            <span className="grid size-10 place-items-center rounded-full bg-leaf/25 ring-1 ring-gold/40">
-              <Mountain className="size-5 text-gold" />
-            </span>
+          <div className="flex items-center gap-2.5">
+            <BrandMark className="size-12" />
             <span>
               <span className="block font-display text-xl font-semibold">{CONTACT.brand}</span>
               <span className="block text-[10px] uppercase tracking-[0.18em] text-gold/80">
@@ -20,6 +30,7 @@ export function SiteFooter() {
               </span>
             </span>
           </div>
+
           <p className="mt-5 max-w-sm text-sm text-primary-foreground/75">
             Premium offbeat travel experiences across Maharashtra. Safe, authentic and unforgettable
             journeys crafted by local experts.
