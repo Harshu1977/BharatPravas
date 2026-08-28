@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ApiChatRouteImport } from './routes/api.chat'
 import { Route as DestinationsIndexRouteImport } from './routes/destinations.index'
 import { Route as DestinationsSlugRouteImport } from './routes/destinations.$slug'
 import { Route as TripsIndexRouteImport } from './routes/trips.index'
@@ -18,6 +19,11 @@ import { Route as TripsSlugRouteImport } from './routes/trips.$slug'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiChatRoute = ApiChatRouteImport.update({
+  id: '/api/chat',
+  path: '/api/chat',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DestinationsIndexRoute = DestinationsIndexRouteImport.update({
@@ -43,6 +49,7 @@ const TripsSlugRoute = TripsSlugRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/api/chat': typeof ApiChatRoute
   '/destinations/$slug': typeof DestinationsSlugRoute
   '/trips/$slug': typeof TripsSlugRoute
   '/destinations/': typeof DestinationsIndexRoute
@@ -50,6 +57,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/api/chat': typeof ApiChatRoute
   '/destinations/$slug': typeof DestinationsSlugRoute
   '/trips/$slug': typeof TripsSlugRoute
   '/destinations': typeof DestinationsIndexRoute
@@ -58,6 +66,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/api/chat': typeof ApiChatRoute
   '/destinations/$slug': typeof DestinationsSlugRoute
   '/trips/$slug': typeof TripsSlugRoute
   '/destinations/': typeof DestinationsIndexRoute
@@ -66,12 +75,24 @@ export interface FileRoutesById {
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/destinations/$slug' | '/trips/$slug' | '/destinations/' | '/trips/'
+    | '/'
+    | '/api/chat'
+    | '/destinations/$slug'
+    | '/trips/$slug'
+    | '/destinations/'
+    | '/trips/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/destinations/$slug' | '/trips/$slug' | '/destinations' | '/trips'
+  to:
+    | '/'
+    | '/api/chat'
+    | '/destinations/$slug'
+    | '/trips/$slug'
+    | '/destinations'
+    | '/trips'
   id:
     | '__root__'
     | '/'
+    | '/api/chat'
     | '/destinations/$slug'
     | '/trips/$slug'
     | '/destinations/'
@@ -80,6 +101,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ApiChatRoute: typeof ApiChatRoute
   DestinationsSlugRoute: typeof DestinationsSlugRoute
   TripsSlugRoute: typeof TripsSlugRoute
   DestinationsIndexRoute: typeof DestinationsIndexRoute
@@ -93,6 +115,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/chat': {
+      id: '/api/chat'
+      path: '/api/chat'
+      fullPath: '/api/chat'
+      preLoaderRoute: typeof ApiChatRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/destinations/': {
@@ -128,6 +157,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ApiChatRoute: ApiChatRoute,
   DestinationsSlugRoute: DestinationsSlugRoute,
   TripsSlugRoute: TripsSlugRoute,
   DestinationsIndexRoute: DestinationsIndexRoute,
