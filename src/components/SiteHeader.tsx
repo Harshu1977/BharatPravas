@@ -1,10 +1,12 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { Menu, X, Mountain } from "lucide-react";
+import { Menu, X, Phone, Mail } from "lucide-react";
 import { CONTACT, whatsappLink } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
+import { BrandMark } from "./Brand";
 
 const nav = [
+  { to: "/", label: "Home" },
   { to: "/destinations", label: "Destinations" },
   { to: "/trips", label: "Trips" },
   { to: "/women-only-tours", label: "Women-Only Tours" },
@@ -25,48 +27,46 @@ export function SiteHeader({ overlay = false }: { overlay?: boolean }) {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const solid = scrolled || !overlay;
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [open]);
+
+  const solid = scrolled || !overlay || open;
 
   return (
     <header
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-all duration-500",
-        solid ? "bg-forest-deep/95 backdrop-blur-md shadow-soft py-2" : "py-4",
+        solid ? "bg-forest-deep/95 py-2 shadow-soft backdrop-blur-md" : "py-4",
       )}
     >
-      <div className="container-x flex items-center justify-between gap-4">
-        <Link to="/" className="flex items-center gap-2 text-primary-foreground">
-          <span className="grid size-10 place-items-center rounded-full bg-leaf/25 ring-1 ring-gold/40">
-            <Mountain className="size-5 text-gold" />
-          </span>
-          <span className="leading-tight">
-            <span className="block font-display text-lg font-semibold">{CONTACT.brand}</span>
-            <span className="block text-[10px] tracking-[0.18em] uppercase text-gold/80">
+      <div className="container-x flex items-center justify-between gap-3">
+        <Link
+          to="/"
+          onClick={() => setOpen(false)}
+          className="flex min-w-0 items-center gap-2.5 text-primary-foreground"
+        >
+          <BrandMark className="size-10 sm:size-11" />
+          <span className="min-w-0 leading-tight">
+            <span className="block truncate font-display text-base font-semibold sm:text-lg">
+              {CONTACT.brand}
+            </span>
+            <span className="block truncate text-[9px] uppercase tracking-[0.18em] text-gold/85 sm:text-[10px]">
               {CONTACT.tagline}
             </span>
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-6 lg:flex">
-          {nav.map((n) => (
-            <Link
-              key={n.to}
-              to={n.to}
-              activeProps={{ className: "text-gold" }}
-              className="relative text-sm font-medium text-primary-foreground/85 transition-colors hover:text-gold after:absolute after:-bottom-1 after:left-0 after:h-px after:w-0 after:bg-gold after:transition-all hover:after:w-full"
-            >
-              {n.label}
-            </Link>
-          ))}
-        </nav>
-
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 sm:gap-3">
           <a
             href={whatsappLink()}
             target="_blank"
             rel="noreferrer"
             aria-label="Chat on WhatsApp"
-            className="hidden size-10 place-items-center rounded-full bg-whatsapp text-white transition-transform hover:scale-110 sm:grid"
+            className="grid size-10 place-items-center rounded-full bg-whatsapp text-white transition-transform hover:scale-110"
           >
             <WhatsAppIcon className="size-5" />
           </a>
@@ -79,38 +79,53 @@ export function SiteHeader({ overlay = false }: { overlay?: boolean }) {
           <button
             onClick={() => setOpen((v) => !v)}
             aria-label="Toggle menu"
-            className="grid size-10 place-items-center rounded-full bg-white/10 text-primary-foreground lg:hidden"
+            aria-expanded={open}
+            className="grid size-10 place-items-center rounded-full bg-white/10 text-primary-foreground transition-colors hover:bg-gold hover:text-accent-foreground"
           >
             {open ? <X className="size-5" /> : <Menu className="size-5" />}
           </button>
         </div>
       </div>
 
+      {/* Slide-down menu — same three-bar menu on every screen size */}
       <div
         className={cn(
-          "overflow-hidden bg-forest-deep/98 transition-[max-height] duration-500 lg:hidden",
-          open ? "max-h-[520px]" : "max-h-0",
+          "overflow-hidden bg-forest-deep/98 transition-[max-height,opacity] duration-500",
+          open ? "max-h-[620px] opacity-100" : "max-h-0 opacity-0",
         )}
       >
-        <nav className="container-x flex flex-col gap-1 py-4">
-          {nav.map((n) => (
+        <nav className="container-x grid gap-1 py-4 sm:grid-cols-2">
+          {nav.map((n, i) => (
             <Link
               key={n.to}
               to={n.to}
               onClick={() => setOpen(false)}
-              className="rounded-lg px-3 py-2.5 text-sm font-medium text-primary-foreground/90 hover:bg-white/10"
+              activeProps={{ className: "text-gold" }}
+              style={{ transitionDelay: `${i * 30}ms` }}
+              className={cn(
+                "rounded-xl px-4 py-3 text-sm font-medium text-primary-foreground/90 transition-all duration-500 hover:bg-white/10 hover:pl-6",
+                open ? "translate-y-0 opacity-100" : "-translate-y-2 opacity-0",
+              )}
             >
               {n.label}
             </Link>
           ))}
+        </nav>
+        <div className="container-x flex flex-wrap items-center gap-4 border-t border-white/10 py-4 text-sm text-primary-foreground/80">
+          <a className="flex items-center gap-2 hover:text-gold" href={`tel:+91${CONTACT.phone}`}>
+            <Phone className="size-4 text-gold" /> {CONTACT.phoneDisplay}
+          </a>
+          <a className="flex items-center gap-2 hover:text-gold" href={`mailto:${CONTACT.email}`}>
+            <Mail className="size-4 text-gold" /> {CONTACT.email}
+          </a>
           <Link
             to="/contact"
             onClick={() => setOpen(false)}
-            className="mt-2 rounded-full bg-gold px-5 py-2.5 text-center text-sm font-semibold text-accent-foreground"
+            className="rounded-full bg-gold px-5 py-2 font-semibold text-accent-foreground sm:hidden"
           >
             Book Now
           </Link>
-        </nav>
+        </div>
       </div>
     </header>
   );
