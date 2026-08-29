@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import { useEffect, useRef, type ReactNode } from "react";
 import { SiteHeader, WhatsAppIcon } from "./SiteHeader";
 import { SiteFooter } from "./SiteFooter";
 import { whatsappLink } from "@/lib/site-data";
