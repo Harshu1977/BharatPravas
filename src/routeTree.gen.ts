@@ -14,6 +14,7 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as CustomTripsRouteImport } from './routes/custom-trips'
 import { Route as WomenOnlyToursRouteImport } from './routes/women-only-tours'
 import { Route as ApiChatRouteImport } from './routes/api.chat'
+import { Route as BlogsIndexRouteImport } from './routes/blogs.index'
 import { Route as DestinationsIndexRouteImport } from './routes/destinations.index'
 import { Route as DestinationsSlugRouteImport } from './routes/destinations.$slug'
 import { Route as TripsIndexRouteImport } from './routes/trips.index'
@@ -42,6 +43,11 @@ const WomenOnlyToursRoute = WomenOnlyToursRouteImport.update({
 const ApiChatRoute = ApiChatRouteImport.update({
   id: '/api/chat',
   path: '/api/chat',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogsIndexRoute = BlogsIndexRouteImport.update({
+  id: '/blogs/',
+  path: '/blogs/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DestinationsIndexRoute = DestinationsIndexRouteImport.update({
@@ -73,6 +79,7 @@ export interface FileRoutesByFullPath {
   '/api/chat': typeof ApiChatRoute
   '/destinations/$slug': typeof DestinationsSlugRoute
   '/trips/$slug': typeof TripsSlugRoute
+  '/blogs/': typeof BlogsIndexRoute
   '/destinations/': typeof DestinationsIndexRoute
   '/trips/': typeof TripsIndexRoute
 }
@@ -84,6 +91,7 @@ export interface FileRoutesByTo {
   '/api/chat': typeof ApiChatRoute
   '/destinations/$slug': typeof DestinationsSlugRoute
   '/trips/$slug': typeof TripsSlugRoute
+  '/blogs': typeof BlogsIndexRoute
   '/destinations': typeof DestinationsIndexRoute
   '/trips': typeof TripsIndexRoute
 }
@@ -96,6 +104,7 @@ export interface FileRoutesById {
   '/api/chat': typeof ApiChatRoute
   '/destinations/$slug': typeof DestinationsSlugRoute
   '/trips/$slug': typeof TripsSlugRoute
+  '/blogs/': typeof BlogsIndexRoute
   '/destinations/': typeof DestinationsIndexRoute
   '/trips/': typeof TripsIndexRoute
 }
@@ -109,6 +118,7 @@ export interface FileRouteTypes {
     | '/api/chat'
     | '/destinations/$slug'
     | '/trips/$slug'
+    | '/blogs/'
     | '/destinations/'
     | '/trips/'
   fileRoutesByTo: FileRoutesByTo
@@ -120,6 +130,7 @@ export interface FileRouteTypes {
     | '/api/chat'
     | '/destinations/$slug'
     | '/trips/$slug'
+    | '/blogs'
     | '/destinations'
     | '/trips'
   id:
@@ -131,6 +142,7 @@ export interface FileRouteTypes {
     | '/api/chat'
     | '/destinations/$slug'
     | '/trips/$slug'
+    | '/blogs/'
     | '/destinations/'
     | '/trips/'
   fileRoutesById: FileRoutesById
@@ -143,6 +155,7 @@ export interface RootRouteChildren {
   ApiChatRoute: typeof ApiChatRoute
   DestinationsSlugRoute: typeof DestinationsSlugRoute
   TripsSlugRoute: typeof TripsSlugRoute
+  BlogsIndexRoute: typeof BlogsIndexRoute
   DestinationsIndexRoute: typeof DestinationsIndexRoute
   TripsIndexRoute: typeof TripsIndexRoute
 }
@@ -184,6 +197,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiChatRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/blogs/': {
+      id: '/blogs/'
+      path: '/blogs'
+      fullPath: '/blogs/'
+      preLoaderRoute: typeof BlogsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/destinations/': {
       id: '/destinations/'
       path: '/destinations'
@@ -223,6 +243,7 @@ const rootRouteChildren: RootRouteChildren = {
   ApiChatRoute: ApiChatRoute,
   DestinationsSlugRoute: DestinationsSlugRoute,
   TripsSlugRoute: TripsSlugRoute,
+  BlogsIndexRoute: BlogsIndexRoute,
   DestinationsIndexRoute: DestinationsIndexRoute,
   TripsIndexRoute: TripsIndexRoute,
 }
