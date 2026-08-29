@@ -1,7 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { z } from "zod";
-import ghats from "@/assets/ghats.jpg";
 import { Page, PageHero } from "@/components/Layout";
 import { Reveal } from "@/components/Reveal";
 import { TripCard } from "@/components/TripCard";
