@@ -4,7 +4,7 @@ import { z } from "zod";
 import { Page, PageHero } from "@/components/Layout";
 import { Reveal } from "@/components/Reveal";
 import { TripCard } from "@/components/TripCard";
-import { trips } from "@/lib/site-data";
+import { IMAGES, trips } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/trips/")({
@@ -50,7 +50,7 @@ function TripsPage() {
           </>
         }
         subtitle="Fixed departures with small groups, verified stays and local leaders. Book your seat before it's gone."
-        image={ghats}
+        image={IMAGES.ghats}
       />
 
       <section className="container-x py-14">
