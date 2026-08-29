@@ -10,7 +10,6 @@ import {
   ShieldCheck,
   Users,
 } from "lucide-react";
-import hero from "@/assets/hero.jpg";
 import { Page } from "@/components/Layout";
 import { Reveal, useParallax } from "@/components/Reveal";
 import { TripCard } from "@/components/TripCard";
@@ -24,7 +23,7 @@ import {
   Testimonials,
 } from "@/components/Sections";
 import { WhatsAppIcon } from "@/components/SiteHeader";
-import { CONTACT, destinations, trips, whatsappLink } from "@/lib/site-data";
+import { CONTACT, destinations, heroImage, trips, whatsappLink } from "@/lib/site-data";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -70,7 +69,7 @@ function Index() {
       {/* HERO */}
       <section className="relative flex min-h-[100svh] items-center overflow-hidden">
         <div ref={parallax} className="absolute inset-0 -top-24 h-[125%] will-change-transform">
-          <img src={hero} alt="Travelers at sunrise on a Western Ghats ridge" className="size-full object-cover" />
+          <img src={heroImage} loading="eager" fetchPriority="high" alt="Travelers at sunrise on a Western Ghats ridge" className="size-full object-cover" />
         </div>
         <div className="absolute inset-0 bg-gradient-to-r from-forest-deep/90 via-forest-deep/60 to-transparent" />
         <Leaf className="animate-float absolute right-[12%] top-[18%] hidden size-10 text-gold/50 lg:block" />

@@ -1,9 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, MapPin } from "lucide-react";
-import fort from "@/assets/fort.jpg";
 import { Page, PageHero } from "@/components/Layout";
 import { Reveal } from "@/components/Reveal";
-import { destinations } from "@/lib/site-data";
+import { destinations, IMAGES } from "@/lib/site-data";
 
 export const Route = createFileRoute("/destinations/")({
   head: () => ({
@@ -32,7 +31,7 @@ function DestinationsPage() {
           </>
         }
         subtitle="Five distinct landscapes, one state. Pick your terrain and we'll handle the rest."
-        image={fort}
+        image={IMAGES.fort}
       />
       <section className="container-x grid gap-8 py-16 md:grid-cols-2">
         {destinations.map((d, i) => (
