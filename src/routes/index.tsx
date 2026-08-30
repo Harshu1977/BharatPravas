@@ -67,40 +67,50 @@ function Index() {
   return (
     <Page overlayHeader>
       {/* HERO */}
-      <section className="relative flex min-h-[100svh] items-center overflow-hidden">
+      <section className="img-vignette relative flex min-h-[100svh] items-center overflow-hidden">
         <div ref={parallax} className="absolute inset-0 -top-24 h-[125%] will-change-transform">
-          <img src={heroImage} loading="eager" fetchPriority="high" alt="Travelers at sunrise on a Western Ghats ridge" className="size-full object-cover" />
+          <img
+            src={heroImage}
+            loading="eager"
+            fetchPriority="high"
+            alt="Travelers at sunrise on a Western Ghats ridge"
+            className="animate-kenburns size-full object-cover"
+          />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-r from-forest-deep/90 via-forest-deep/60 to-transparent" />
-        <Leaf className="animate-float absolute right-[12%] top-[18%] hidden size-10 text-gold/50 lg:block" />
-        <Leaf className="animate-float absolute left-[6%] top-[62%] hidden size-8 text-leaf/50 lg:block [animation-delay:1.5s]" />
+        <div className="absolute inset-0 bg-gradient-to-r from-forest-deep/92 via-forest-deep/62 to-forest-deep/10" />
+        <div className="absolute inset-x-0 bottom-0 h-56 bg-gradient-to-t from-background to-transparent" />
+        <Leaf className="animate-float absolute right-[12%] top-[18%] hidden size-10 text-gold/40 lg:block" />
+        <Leaf className="animate-float absolute left-[6%] top-[62%] hidden size-8 text-gold/25 lg:block [animation-delay:1.5s]" />
 
-        <div className="container-x relative pb-28 pt-32">
+        <div className="container-x relative pb-32 pt-32">
           <Reveal>
-            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-gold">
-              Offbeat • Authentic • Safe
-            </p>
+            <span className="inline-flex items-center gap-3">
+              <span className="rule-gold" />
+              <span className="text-[11px] font-semibold uppercase tracking-[0.42em] text-gold">
+                Offbeat · Authentic · Safe
+              </span>
+            </span>
           </Reveal>
           <Reveal delay={120}>
-            <h1 className="mt-4 max-w-3xl text-4xl font-semibold leading-[1.08] text-primary-foreground sm:text-5xl lg:text-6xl">
+            <h1 className="mt-5 max-w-3xl text-[2.6rem] font-semibold leading-[1.04] text-primary-foreground sm:text-6xl lg:text-[4.4rem]">
               Maharashtra,
               <br />
-              Unfiltered. <span className="text-leaf">Experiences</span>
+              Unfiltered. <span className="text-foil">Experiences</span>
               <br />
-              <span className="text-script">that stay with you.</span>
+              <span className="text-script text-primary-foreground/90">that stay with you.</span>
             </h1>
           </Reveal>
           <Reveal delay={240}>
-            <p className="mt-6 max-w-xl text-primary-foreground/85">
+            <p className="mt-7 max-w-xl text-base leading-relaxed text-primary-foreground/80">
               Premium group trips, treks & women-only tours crafted for authentic experiences and
               lasting memories.
             </p>
           </Reveal>
           <Reveal delay={340}>
-            <div className="mt-8 flex flex-wrap gap-3">
+            <div className="mt-9 flex flex-wrap gap-3">
               <Link
                 to="/trips"
-                className="group inline-flex items-center gap-2 rounded-full bg-leaf px-6 py-3 text-sm font-semibold text-primary-foreground transition-transform hover:scale-105"
+                className="sheen group inline-flex items-center gap-2 rounded-full bg-gold-gradient px-7 py-3.5 text-sm font-semibold tracking-wide text-accent-foreground shadow-soft transition-transform duration-300 hover:-translate-y-0.5"
               >
                 Explore Trips
                 <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
@@ -109,23 +119,23 @@ function Index() {
                 href={whatsappLink()}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border border-white/40 bg-white/10 px-6 py-3 text-sm font-semibold text-primary-foreground backdrop-blur transition-colors hover:bg-white/20"
+                className="glass inline-flex items-center gap-2 rounded-full px-7 py-3.5 text-sm font-semibold text-primary-foreground transition-transform duration-300 hover:-translate-y-0.5"
               >
                 <WhatsAppIcon className="size-4" /> Chat on WhatsApp
               </a>
             </div>
           </Reveal>
 
-          <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-16 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {usps.map((u, i) => (
               <Reveal key={u.title} delay={i * 110}>
-                <div className="flex items-center gap-3 rounded-2xl border border-white/15 bg-white/10 px-4 py-3 backdrop-blur-md">
-                  <span className="grid size-10 shrink-0 place-items-center rounded-full bg-gold/20">
+                <div className="glass flex items-center gap-3 rounded-2xl px-4 py-3.5 transition-colors duration-300 hover:border-gold/40">
+                  <span className="grid size-10 shrink-0 place-items-center rounded-full bg-gold/15 ring-1 ring-gold/30">
                     <u.Icon className="size-5 text-gold" />
                   </span>
                   <span>
                     <span className="block text-sm font-semibold text-primary-foreground">{u.title}</span>
-                    <span className="block text-xs text-primary-foreground/70">{u.sub}</span>
+                    <span className="block text-xs text-primary-foreground/65">{u.sub}</span>
                   </span>
                 </div>
               </Reveal>
@@ -133,6 +143,7 @@ function Index() {
           </div>
         </div>
       </section>
+
 
       {/* SEARCH BAR */}
       <section className="container-x -mt-14 relative z-10">
