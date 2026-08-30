@@ -214,15 +214,15 @@ function Index() {
               <Link
                 to="/destinations/$slug"
                 params={{ slug: d.slug }}
-                className="group relative block aspect-[3/4] overflow-hidden rounded-2xl shadow-soft"
+                className="group relative block aspect-[3/4] overflow-hidden rounded-2xl shadow-soft ring-1 ring-forest-deep/10 transition-shadow duration-500 hover:shadow-card"
               >
                 <img
                   src={d.image}
                   alt={d.name}
                   loading="lazy"
-                  className="size-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  className="size-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.12]"
                 />
-                <span className="absolute inset-0 bg-gradient-to-t from-forest-deep via-forest-deep/25 to-transparent" />
+                <span className="absolute inset-0 bg-gradient-to-t from-forest-deep via-forest-deep/35 to-transparent" />
                 <span className="absolute inset-x-0 bottom-0 p-4">
                   <span className="block font-display text-lg font-semibold text-primary-foreground">
                     {d.name}
@@ -232,7 +232,7 @@ function Index() {
                     <span className="flex items-center gap-1 text-[11px] text-gold">
                       <MapPin className="size-3" /> {d.trips}
                     </span>
-                    <span className="grid size-7 place-items-center rounded-full bg-leaf text-primary-foreground transition-transform group-hover:translate-x-1">
+                    <span className="grid size-7 place-items-center rounded-full bg-gold text-accent-foreground transition-transform group-hover:translate-x-1">
                       <ArrowRight className="size-3.5" />
                     </span>
                   </span>
@@ -274,9 +274,9 @@ function Index() {
         <Reveal variant="zoom">
           <div className="grid gap-8 rounded-3xl bg-card p-8 shadow-card md:grid-cols-[1fr_1.2fr] md:p-12">
             <div>
-              <Compass className="size-10 text-leaf" />
+              <Compass className="size-10 text-gold" />
               <h2 className="mt-4 text-3xl font-semibold">
-                Plan Your Perfect Trip <span className="text-script text-leaf">✦</span>
+                Plan Your Perfect Trip <span className="text-script text-gold">✦</span>
               </h2>
               <p className="mt-3 text-sm text-muted-foreground">
                 Tell us your preferences, we'll craft the perfect itinerary for you — usually within 24
