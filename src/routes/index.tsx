@@ -146,11 +146,11 @@ function Index() {
 
 
       {/* SEARCH BAR */}
-      <section className="container-x -mt-14 relative z-10">
+      <section className="container-x relative z-10 -mt-16">
         <Reveal variant="zoom">
-          <div className="rounded-3xl bg-card p-5 shadow-card md:p-7">
+          <div className="rounded-[1.75rem] border border-border/70 bg-card p-5 shadow-card md:p-7">
             <div className="grid gap-3 md:grid-cols-[1fr_1fr_1fr_auto]">
-              <label className="flex items-center gap-2 rounded-xl border border-border px-3.5 py-3">
+              <label className="flex items-center gap-2 rounded-xl border border-border bg-secondary/40 px-3.5 py-3 transition-colors focus-within:border-gold">
                 <Search className="size-4 text-muted-foreground" />
                 <input
                   value={query}
@@ -159,14 +159,14 @@ function Index() {
                   className="w-full bg-transparent text-sm outline-none"
                 />
               </label>
-              <select className="rounded-xl border border-border px-3.5 py-3 text-sm outline-none">
+              <select className="rounded-xl border border-border bg-secondary/40 px-3.5 py-3 text-sm outline-none transition-colors focus:border-gold">
                 <option>All Types</option>
                 <option>Trek</option>
                 <option>Women-Only</option>
                 <option>Beach Camping</option>
                 <option>Heritage Walk</option>
               </select>
-              <select className="rounded-xl border border-border px-3.5 py-3 text-sm outline-none">
+              <select className="rounded-xl border border-border bg-secondary/40 px-3.5 py-3 text-sm outline-none transition-colors focus:border-gold">
                 <option>Select Month</option>
                 {["May", "June", "July", "August", "September", "October"].map((m) => (
                   <option key={m}>{m}</option>
@@ -175,7 +175,7 @@ function Index() {
               <Link
                 to="/trips"
                 search={{ q: query || undefined }}
-                className="inline-flex items-center justify-center gap-2 rounded-xl bg-forest px-7 py-3 text-sm font-semibold text-primary-foreground transition-colors hover:bg-forest-deep"
+                className="sheen inline-flex items-center justify-center gap-2 rounded-xl bg-forest px-7 py-3 text-sm font-semibold text-primary-foreground transition-colors hover:bg-forest-deep"
               >
                 <Search className="size-4" /> Search Trips
               </Link>
@@ -186,7 +186,7 @@ function Index() {
                   key={f}
                   to="/trips"
                   search={{ q: f }}
-                  className="rounded-full border border-border px-4 py-2 text-xs font-medium text-muted-foreground transition-all hover:-translate-y-0.5 hover:border-leaf hover:text-forest"
+                  className="rounded-full border border-border px-4 py-2 text-xs font-medium text-muted-foreground transition-all hover:-translate-y-0.5 hover:border-gold hover:text-forest"
                 >
                   {f}
                 </Link>
@@ -195,6 +195,7 @@ function Index() {
           </div>
         </Reveal>
       </section>
+
 
       {/* DESTINATIONS */}
       <section className="container-x py-20">
