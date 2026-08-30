@@ -43,39 +43,41 @@
 
 :root {
   --radius: 0.75rem;
-  --cream: oklch(0.977 0.011 95);
-  --sand: oklch(0.947 0.021 92);
-  --forest: oklch(0.33 0.062 152);
-  --forest-deep: oklch(0.235 0.048 154);
-  --leaf: oklch(0.52 0.11 148);
-  --gold: oklch(0.79 0.13 82);
+  /* Sky-blue palette: token names kept for compatibility */
+  --cream: oklch(0.978 0.012 230);
+  --sand: oklch(0.945 0.026 232);
+  --forest: oklch(0.52 0.13 245);
+  --forest-deep: oklch(0.34 0.1 250);
+  --leaf: oklch(0.7 0.13 232);
+  --gold: oklch(0.83 0.11 205);
   --whatsapp: oklch(0.68 0.16 148);
 
   --background: var(--cream);
-  --foreground: oklch(0.22 0.02 150);
+  --foreground: oklch(0.24 0.035 250);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.22 0.02 150);
+  --card-foreground: oklch(0.24 0.035 250);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.22 0.02 150);
+  --popover-foreground: oklch(0.24 0.035 250);
   --primary: var(--forest);
-  --primary-foreground: oklch(0.98 0.01 95);
+  --primary-foreground: oklch(0.985 0.008 230);
   --secondary: var(--sand);
   --secondary-foreground: var(--forest-deep);
-  --muted: oklch(0.94 0.012 95);
-  --muted-foreground: oklch(0.5 0.02 150);
+  --muted: oklch(0.94 0.018 232);
+  --muted-foreground: oklch(0.52 0.03 245);
   --accent: var(--gold);
-  --accent-foreground: oklch(0.25 0.04 90);
+  --accent-foreground: oklch(0.26 0.06 245);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.9 0.015 95);
-  --input: oklch(0.9 0.015 95);
+  --border: oklch(0.9 0.02 232);
+  --input: oklch(0.9 0.02 232);
   --ring: var(--leaf);
 
-  --shadow-soft: 0 10px 30px -12px oklch(0.235 0.048 154 / 0.25);
-  --shadow-card: 0 18px 45px -18px oklch(0.235 0.048 154 / 0.35);
+  --shadow-soft: 0 10px 30px -12px oklch(0.34 0.1 250 / 0.25);
+  --shadow-card: 0 18px 45px -18px oklch(0.34 0.1 250 / 0.35);
   --gradient-forest: linear-gradient(135deg, var(--forest-deep), var(--forest));
-  --gradient-gold: linear-gradient(100deg, var(--gold), oklch(0.86 0.1 95));
+  --gradient-gold: linear-gradient(100deg, var(--gold), oklch(0.9 0.07 210));
 }
+
 
 @layer base {
   * {
@@ -178,13 +180,13 @@
 
 @keyframes pulse-ring {
   0% {
-    box-shadow: 0 0 0 0 oklch(0.68 0.16 148 / 0.55);
+    box-shadow: 0 0 0 0 oklch(0.6 0.14 235 / 0.55);
   }
   70% {
-    box-shadow: 0 0 0 16px oklch(0.68 0.16 148 / 0);
+    box-shadow: 0 0 0 16px oklch(0.6 0.14 235 / 0);
   }
   100% {
-    box-shadow: 0 0 0 0 oklch(0.68 0.16 148 / 0);
+    box-shadow: 0 0 0 0 oklch(0.6 0.14 235 / 0);
   }
 }
 
