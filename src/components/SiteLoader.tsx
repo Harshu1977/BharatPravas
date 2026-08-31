@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { BrandMark } from "./Brand";
 import { allImages, CONTACT } from "@/lib/site-data";
+import { heroVideoUrl } from "./HeroVideo";
 
 const DURATION = 5000;
 
@@ -15,11 +16,35 @@ export function SiteLoader() {
       img.src = src;
     });
 
-    const start = Date.now();
+    // Warm the hero background clip too.
+    const v = document.createElement("video");
+    v.preload = "auto";
+    v.muted = true;
+    v.src = heroVideoUrl;
+
+    // Intro plays once per browser session — repeat visits open instantly.
+    let seen = false;
+    try {
+      seen = window.sessionStorage.getItem("bp-intro") === "1";
+      window.sessionStorage.setItem("bp-intro", "1");
+    } catch {
+      seen = false;
+    }
+    if (seen) {
+      setProgress(100);
+      setDone(true);
+      return;
+    }
+
+    // Measure from navigation start so the intro is 5s total, not 5s after hydration.
+    const elapsed = () => performance.now();
     const tick = window.setInterval(() => {
-      setProgress(Math.min(100, ((Date.now() - start) / DURATION) * 100));
+      setProgress(Math.min(100, (elapsed() / DURATION) * 100));
     }, 60);
-    const end = window.setTimeout(() => setDone(true), DURATION);
+    const end = window.setTimeout(
+      () => setDone(true),
+      Math.max(400, DURATION - elapsed()),
+    );
     document.body.style.overflow = "hidden";
 
     return () => {

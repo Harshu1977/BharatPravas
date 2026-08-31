@@ -3,6 +3,7 @@ import { SiteHeader, WhatsAppIcon } from "./SiteHeader";
 import { SiteFooter } from "./SiteFooter";
 import { whatsappLink } from "@/lib/site-data";
 import { Reveal } from "./Reveal";
+import { HeroVideo } from "./HeroVideo";
 
 export function FloatingWhatsApp() {
   return (
@@ -68,15 +69,9 @@ export function PageHero({
   image: string;
 }) {
   return (
-    <section className="relative flex min-h-[52vh] items-end overflow-hidden pb-14 pt-32">
-      <img
-        src={image}
-        alt=""
-        aria-hidden="true"
-        className="absolute inset-0 size-full object-cover"
-        loading="eager"
-      />
-      <div className="absolute inset-0 bg-gradient-to-t from-forest-deep via-forest-deep/70 to-forest-deep/40" />
+    <section className="img-vignette relative flex min-h-[56vh] items-end overflow-hidden pb-14 pt-32">
+      <HeroVideo poster={image} />
+      <div className="absolute inset-0 bg-gradient-to-t from-forest-deep via-forest-deep/72 to-forest-deep/35" />
       <div className="container-x relative">
         <Reveal>
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-gold">{eyebrow}</p>
