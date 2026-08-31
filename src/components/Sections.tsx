@@ -119,7 +119,7 @@ export function MomentsGallery() {
         {moments.map((src, i) => (
           <Reveal key={i} delay={i * 60} variant="zoom">
             <button
-              onClick={() => setActive(videoIds[i % videoIds.length])}
+              onClick={() => setActive(videoIds[i % videoIds.length] ?? null)}
               className="group relative block aspect-[3/4] w-full overflow-hidden rounded-xl shadow-soft"
               aria-label="Play travel reel"
             >
