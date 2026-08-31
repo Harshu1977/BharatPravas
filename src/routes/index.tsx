@@ -13,6 +13,7 @@ import {
 import { Page } from "@/components/Layout";
 import { Reveal, useParallax } from "@/components/Reveal";
 import { TripCard } from "@/components/TripCard";
+import { HeroVideo } from "@/components/HeroVideo";
 import { PlanTripForm } from "@/components/PlanTripForm";
 import {
   BlogTeasers,
