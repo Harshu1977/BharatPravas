@@ -22,6 +22,20 @@ export function SiteLoader() {
     v.muted = true;
     v.src = heroVideoUrl;
 
+    // Intro plays once per browser session — repeat visits open instantly.
+    let seen = false;
+    try {
+      seen = window.sessionStorage.getItem("bp-intro") === "1";
+      window.sessionStorage.setItem("bp-intro", "1");
+    } catch {
+      seen = false;
+    }
+    if (seen) {
+      setProgress(100);
+      setDone(true);
+      return;
+    }
+
     const start = Date.now();
     const tick = window.setInterval(() => {
       setProgress(Math.min(100, ((Date.now() - start) / DURATION) * 100));
