@@ -1,9 +1,11 @@
 {
   "version": 1,
-  "asset_id": "7bb78af0-5ff4-4f43-a112-453f70f35dd4",
+  "asset_id": "f047491d-9348-4967-995f-8148f43bf147",
   "project_id": "9b20d438-8e00-48ef-93e5-771f9926b9eb",
-  "url": "/__l5e/assets-v1/7bb78af0-5ff4-4f43-a112-453f70f35dd4/hero-loop.mp4",
+  "url": "/__l5e/assets-v1/f047491d-9348-4967-995f-8148f43bf147/hero-loop.mp4",
+  "r2_key": "a/v1/9b20d438-8e00-48ef-93e5-771f9926b9eb/f047491d-9348-4967-995f-8148f43bf147/hero-loop.mp4",
   "original_filename": "hero-loop.mp4",
-  "size": 8477823,
-  "created_at": "2026-08-31T13:07:55Z"
+  "size": 408458,
+  "content_type": "video/mp4",
+  "created_at": "2026-08-31T13:11:05Z"
 }
