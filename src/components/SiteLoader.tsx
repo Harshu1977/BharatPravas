@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { BrandMark } from "./Brand";
 import { allImages, CONTACT } from "@/lib/site-data";
+import { heroVideoUrl } from "./HeroVideo";
 
 const DURATION = 5000;
 
@@ -14,6 +15,12 @@ export function SiteLoader() {
       const img = new Image();
       img.src = src;
     });
+
+    // Warm the hero background clip too.
+    const v = document.createElement("video");
+    v.preload = "auto";
+    v.muted = true;
+    v.src = heroVideoUrl;
 
     const start = Date.now();
     const tick = window.setInterval(() => {
