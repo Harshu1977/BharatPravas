@@ -36,11 +36,15 @@ export function SiteLoader() {
       return;
     }
 
-    const start = Date.now();
+    // Measure from navigation start so the intro is 5s total, not 5s after hydration.
+    const elapsed = () => performance.now();
     const tick = window.setInterval(() => {
-      setProgress(Math.min(100, ((Date.now() - start) / DURATION) * 100));
+      setProgress(Math.min(100, (elapsed() / DURATION) * 100));
     }, 60);
-    const end = window.setTimeout(() => setDone(true), DURATION);
+    const end = window.setTimeout(
+      () => setDone(true),
+      Math.max(400, DURATION - elapsed()),
+    );
     document.body.style.overflow = "hidden";
 
     return () => {
