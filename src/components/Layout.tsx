@@ -3,6 +3,7 @@ import { SiteHeader, WhatsAppIcon } from "./SiteHeader";
 import { SiteFooter } from "./SiteFooter";
 import { whatsappLink } from "@/lib/site-data";
 import { Reveal } from "./Reveal";
+import { HeroVideo } from "./HeroVideo";
 
 export function FloatingWhatsApp() {
   return (
