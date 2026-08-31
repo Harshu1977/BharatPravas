@@ -69,13 +69,7 @@ function Index() {
       {/* HERO */}
       <section className="img-vignette relative flex min-h-[100svh] items-center overflow-hidden">
         <div ref={parallax} className="absolute inset-0 -top-24 h-[125%] will-change-transform">
-          <img
-            src={heroImage}
-            loading="eager"
-            fetchPriority="high"
-            alt="Travelers at sunrise on a Western Ghats ridge"
-            className="animate-kenburns size-full object-cover"
-          />
+          <HeroVideo poster={heroImage} alt="Sunrise over the Western Ghats" />
         </div>
         <div className="absolute inset-0 bg-gradient-to-r from-forest-deep/92 via-forest-deep/62 to-forest-deep/10" />
         <div className="absolute inset-x-0 bottom-0 h-56 bg-gradient-to-t from-background to-transparent" />
