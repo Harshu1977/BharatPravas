@@ -1,14 +1,18 @@
-# Welcome to your Lovable project
+# Pixel Perfect Pages
+
+Refer this Image I need Exactly same looking Website also Addon Scroll Based ANimations as well Contact as 9270772205 and mail as xplorevo@gmail.com Whatsapp as same +91 97632 62025 as like Make proper functional website with animations And all Add reference videoas and all Whichever necessary But I need same looking website with  all pages Functional
 
 This project was built with [Lovable](https://lovable.dev).
 
+**Live app**: https://engaging-page-flow.lovable.app
+
 ## Build with Lovable
 
-Open your project in the [Lovable editor](https://lovable.dev) and keep building.
+Continue developing this project in the [Lovable editor](https://lovable.dev/projects/9b20d438-8e00-48ef-93e5-771f9926b9eb).
 
 - **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: connect the project to GitHub and every change made in Lovable is committed straight to your repository.
-- **Full ownership**: this code is yours. Push to your repository and your changes sync back into Lovable, ready for your next prompt.
+- **Stay in sync**: every change made in Lovable is committed straight to this repository.
+- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
 
 ## Development
 
@@ -20,10 +24,3 @@ cd <repository-name>
 npm i
 npm run dev
 ```
-
-## Built with
-
-- TanStack Start
-- TypeScript
-- React
-- Tailwind CSS
