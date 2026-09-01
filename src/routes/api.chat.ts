@@ -17,7 +17,13 @@ export const Route = createFileRoute("/api/chat")({
         if (!messages.length) return new Response("Messages are required", { status: 400 });
 
         const apiKey = process.env["LOVABLE_API_KEY"];
-        if (!apiKey) return new Response("AI is not configured", { status: 500 });
+        if (!apiKey) {
+          // Graceful degradation on hosts without the AI key configured.
+          return new Response(
+            "Our chat assistant is offline on this deployment. Please WhatsApp us at +91 97632 62025 or email xplorevo@gmail.com and we'll reply right away.",
+            { status: 200, headers: { "Content-Type": "text/plain; charset=utf-8" } },
+          );
+        }
 
         const upstream = await fetch("https://ai.gateway.lovable.dev/v1/responses", {
           method: "POST",

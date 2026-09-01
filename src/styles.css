@@ -302,9 +302,28 @@
   animation: pulse-ring 2.4s infinite;
 }
 
+/* Smooth page-enter transition on every route change */
+@keyframes page-enter {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 14px, 0);
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: blur(0);
+  }
+}
+
+@utility animate-page-enter {
+  animation: page-enter 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .reveal,
   .reveal-zoom,
+  .animate-page-enter,
   .animate-kenburns,
   .animate-float {
     opacity: 1 !important;

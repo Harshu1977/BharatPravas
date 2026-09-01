@@ -358,3 +358,13 @@ Built with ❤️ for travelers and for India.
 ### 🇮🇳 BharatYatra
 
 **Discover India. Experience India. Travel India.**
+
+## Deploying to Netlify
+
+1. Push this repo and create a new Netlify site from it (settings are picked up from `netlify.toml`).
+   - Build command: `npm run build`
+   - Publish directory: `dist`
+   - Server output: `.netlify/functions-internal` (generated automatically by the Nitro `netlify` preset)
+2. Node 22 is pinned via `netlify.toml` / `.nvmrc`.
+3. Optional env var: `LOVABLE_API_KEY` enables the AI chat widget. Without it the widget replies with the WhatsApp/email fallback instead of erroring.
+4. Logo and hero video are self-hosted in `public/media/`, so all media loads from your own domain after deploy.

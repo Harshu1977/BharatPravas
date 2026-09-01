@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
-import heroLoop from "@/assets/hero-loop.mp4.asset.json";
 
-export const heroVideoUrl = heroLoop.url;
+// Self-hosted from /public so the clip streams from the same origin on Netlify.
+export const heroVideoUrl = "/media/hero-loop.mp4";
 
 /**
  * Full-bleed background video with an eager poster image underneath so the

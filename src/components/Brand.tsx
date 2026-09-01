@@ -1,6 +1,5 @@
-import logo from "@/assets/logo.png.asset.json";
-
-export const LOGO_URL = logo.url;
+// Self-hosted from /public so the logo resolves on any host (Netlify included).
+export const LOGO_URL = "/media/logo.png";
 
 /** Circular emblem cropped out of the full logo lockup. */
 export function BrandMark({ className = "size-11" }: { className?: string }) {
