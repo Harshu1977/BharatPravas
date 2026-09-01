@@ -47,10 +47,13 @@ export function ScrollProgress() {
 
 
 export function Page({ children, overlayHeader = false }: { children: ReactNode; overlayHeader?: boolean }) {
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
   return (
     <div className="min-h-screen bg-background">
       <SiteHeader overlay={overlayHeader} />
-      <main>{children}</main>
+      <main key={pathname} className="animate-page-enter">
+        {children}
+      </main>
       <SiteFooter />
       <FloatingWhatsApp />
     </div>
