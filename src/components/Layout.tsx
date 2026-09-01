@@ -1,4 +1,5 @@
 import { useEffect, useRef, type ReactNode } from "react";
+import { useRouterState } from "@tanstack/react-router";
 import { SiteHeader, WhatsAppIcon } from "./SiteHeader";
 import { SiteFooter } from "./SiteFooter";
 import { whatsappLink } from "@/lib/site-data";
